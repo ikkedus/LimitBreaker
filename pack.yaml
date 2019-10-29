@@ -1,6 +1,6 @@
 ---
 ref: ratelimit
-name: rate limiter
+name: ratelimiter
 description: this is a rate limiter.
 version: 0.0.1
 author: Martin van der Gragt

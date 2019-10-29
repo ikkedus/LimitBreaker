@@ -12,6 +12,3 @@ parameters:
   action:
     required: true
     type: string
-  date:
-    required: true
-    type: string
