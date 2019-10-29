@@ -5,4 +5,4 @@ tasks:
   test:
     action: core.noop
 output:
-  - result: <% ctx() %>
+  - result: <% trigger() %>
