@@ -1,0 +1,4 @@
+---
+name: rate limit evaluate
+pack: ratelimit
+description: 'Trigger type for nagios service state change event.'
