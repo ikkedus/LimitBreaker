@@ -3,7 +3,7 @@ name: "getNumberOfExecutions"
 pack: ratelimit
 description: "This gets the number of executions of a action on a host since a given date"
 runner_type: orquesta
-entry_point: workflows/RateLimiter_workflow.yaml
+entry_point: workflows/getNumberOfExecutions_workflow.yaml
 enabled: true
 parameters:
   host:
