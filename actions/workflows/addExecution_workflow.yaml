@@ -11,7 +11,7 @@ tasks:
     input:
       connection: mysql
       username: lordcommander
-      table: "executions"
+      table: executions
       data:
         hostname: '<% ctx(host) %>'
         action: '<% ctx(action) %>'
