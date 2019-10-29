@@ -11,13 +11,13 @@ tasks:
     input:
       username: lordcommander
       connection: mysql
-      query: select count(*) FROM executions WHERE action = '<% ctx(action) %>' AND hostname = '<% ctx(host) %>' AND executiontime BETWEEN <% ctx(date) %> and NOW()
+      query: select count(*) as number FROM executions WHERE action = '<% ctx(action) %>' AND hostname = '<% ctx(host) %>' AND executiontime BETWEEN <% ctx(date) %> and NOW()
     next:
       - when: <% succeeded() %>
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
-          - numberOfExecutions: <% result().stdout %>
+          - numberOfExecutions: <% result().number %>
       - when: <% failed() %>
         publish:
           - stdout: <% result().stdout %>
