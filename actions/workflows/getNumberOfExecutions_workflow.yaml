@@ -5,6 +5,8 @@ input:
   - host
   - action
   - date
+vars:
+  - number: 0
 tasks:
   getNumberOfExecutions:
     action: sql.query
@@ -15,17 +17,9 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - stdout: <% result().stdout %>
-          - stderr: <% result().stderr %>
-          - numberOfExecutions: <% result().number %>
+          - number: <% result().number %>
       - when: <% failed() %>
-        publish:
-          - stdout: <% result().stdout %>
-          - stderr: <% result().stderr %>
-          - numberOfExecutions: <% result().number %>
         do: 
          - fail
 output:
-  - numberOfExecutions: <% ctx(numberOfExecutions) %>
-  - stdout: <% ctx(stdout) %>
-  - stderr: <% ctx(stderr) %>
+  - result: <% ctx().number %>
