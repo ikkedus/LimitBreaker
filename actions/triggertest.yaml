@@ -6,6 +6,6 @@ runner_type: orquesta
 entry_point: workflows/triggertest.yaml
 enabled: true
 parameters:
-  host:
+  data:
     required: true
     type: object
