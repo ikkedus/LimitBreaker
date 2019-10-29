@@ -1,0 +1,11 @@
+---
+name: "input type test"
+pack: ratelimit
+description: "this adds a execution to the executions table"
+runner_type: orquesta
+entry_point: workflows/triggertest.yaml
+enabled: true
+parameters:
+  trigger:
+    required: true
+    type: object

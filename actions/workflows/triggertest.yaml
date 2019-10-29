@@ -1,0 +1,10 @@
+version: 1.0
+description: This gets the nunber of executions of a action on a host.
+
+input:
+  - trigger
+tasks:
+  test:
+    action: core.noop
+output:
+  - result: <% ctx(trigger) %>
