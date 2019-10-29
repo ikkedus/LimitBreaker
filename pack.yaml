@@ -1,5 +1,5 @@
 ---
-ref: rate limit
+ref: ratelimit
 name: rate limiter
 description: this is a rate limiter.
 version: 0.0.1

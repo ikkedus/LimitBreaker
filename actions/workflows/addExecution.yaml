@@ -1,0 +1,43 @@
+version: 1.0
+description: This gets the nunber of executions of a action on a host.
+
+input:
+  - host
+  - action
+  - date
+tasks:
+  getNumberOfExecutions:
+    action: sql.insert
+    input:
+      connection: mysql
+      username: lordcommander
+      table: "executions"
+      data:
+        hostname: '<% ctx(host) %>'
+        action: '<% ctx(action) %>'
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+      - when: <% failed() %>
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+          - failure: |
+            *MaGiCARP ran into a MYSQL error*
+            Notification recieved concerning <% ctx(host) %> 
+            
+            *Error*
+            ``` <% ctx(result().stdout) %>```
+            ``` <% ctx(result().stderr) %>```
+        do: 
+         - failed
+         - fail
+  failed:
+    action: slack.post_message
+    input:
+      message: <% ctx(failure) %>
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
