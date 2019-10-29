@@ -17,9 +17,9 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - number: <% result().number %>
+          - number: <% result() %>
       - when: <% failed() %>
         do: 
          - fail
 output:
-  - result: <% ctx().number %>
+  - result: <% ctx(number) %>
