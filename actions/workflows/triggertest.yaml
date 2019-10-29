@@ -6,3 +6,4 @@ tasks:
     action: core.noop
 output:
   - result: <% ctx().parent.trigger_instance.id %>
+  - trigger: <% trigger() %>
