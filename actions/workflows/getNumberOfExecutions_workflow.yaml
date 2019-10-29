@@ -21,4 +21,5 @@ tasks:
       - when: <% failed() %>
         do: 
          - fail
-output: <% ctx(number) %>
+output:
+  - result: <% ctx(number) %>
