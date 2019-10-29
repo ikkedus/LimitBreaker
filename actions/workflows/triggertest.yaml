@@ -7,4 +7,4 @@ tasks:
   test:
     action: core.noop
 output:
-  - result: <% ctx(trigger) %>
+  - result: "nop"
