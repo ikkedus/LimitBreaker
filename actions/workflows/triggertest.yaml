@@ -1,9 +1,11 @@
 version: 1.0
 description: This gets the nunber of executions of a action on a host.
 
+input:
+ - data
+
 tasks:
   test:
     action: core.noop
 output:
-  - result: <% ctx().parent.trigger_instance.id %>
-  - trigger: <% trigger() %>
+  - result: <% ctx(data) %>
