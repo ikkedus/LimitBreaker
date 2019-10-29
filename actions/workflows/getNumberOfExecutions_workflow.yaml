@@ -17,7 +17,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - number: <% result() %>
+          - number: <% result().result.number %>
       - when: <% failed() %>
         do: 
          - fail
