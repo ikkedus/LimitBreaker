@@ -22,20 +22,8 @@ tasks:
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
-          - failure: |
-            *MaGiCARP ran into a MYSQL error*
-            Notification recieved concerning <% ctx(host) %> 
-            
-            *Error*
-            ``` <% ctx(result().stdout) %>```
-            ``` <% ctx(result().stderr) %>```
         do: 
-         - failed
          - fail
-  failed:
-    action: slack.post_message
-    input:
-      message: <% ctx(failure) %>
 output:
   - numberOfExecutions: <% ctx(numberOfExecutions) %>
   - stdout: <% ctx(stdout) %>
