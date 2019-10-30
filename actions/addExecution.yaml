@@ -12,3 +12,6 @@ parameters:
   action:
     required: true
     type: string
+  data:
+    required: false
+    type: object
