@@ -19,7 +19,7 @@ tasks:
       - when: <% succeeded() %>
         publish:
           - data.executions: <% result().result.number %>
-          - data.action: <% ctx(action) %>
+          - data.action: <% ctx(data).action = ctx(action) %>
         do: trigger
       - when: <% failed() %>
         do: 
