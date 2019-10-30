@@ -20,8 +20,8 @@ tasks:
       - when: <% succeeded() %>
         publish:
           - payload: <% ctx(data) %>
-          - payload.executions: <% result().result.number %>
-          - payload.action: <% ctx(action) %>
+          - payload[executions]: <% result().result.number %>
+          - payload[action]: <% ctx(action) %>
         do: trigger
       - when: <% failed() %>
         do: 
