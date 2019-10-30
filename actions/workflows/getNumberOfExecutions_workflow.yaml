@@ -5,6 +5,7 @@ input:
   - host
   - action
   - date
+  - data
 vars:
   - number: 0
 tasks:
@@ -17,9 +18,16 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - number: <% result().result.number %>
+          - data.executions: <% result().result.number %>
+          - data.action: <% ctx(action) %>
+        do: trigger
       - when: <% failed() %>
         do: 
          - fail
+  trigger:
+    action: core.inject_trigger
+    input:
+      trigger: ratelimit.evaluated
+      payload: <% ctx(data) %>
 output:
-  - result: <% ctx(number) %>
+  - result: <% ctx(data) %>

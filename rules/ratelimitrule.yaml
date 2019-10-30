@@ -1,0 +1,16 @@
+---
+name: Rate Limit
+pack: 'MaGiCARP'
+description: "rate limiting based on data collected in a mysql database."
+enabled: true
+
+trigger:
+  type: "magicarp.service_state_change"
+  parameters: 
+criteria:
+action:
+  ref: "ratelimit.ratelimiter"
+  paramters: 
+    data: "{{trigger.data}}"
+    allowed_executions: 3
+    number_of_days: 7

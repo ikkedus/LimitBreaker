@@ -15,3 +15,6 @@ parameters:
   date:
     required: true
     type: string
+  data:
+    required: true
+    type: object
