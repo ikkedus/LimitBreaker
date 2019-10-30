@@ -8,6 +8,7 @@ input:
   - data
 vars:
   - number: 0
+  - payload:
 tasks:
   getNumberOfExecutions:
     action: sql.query
@@ -18,8 +19,9 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - data.executions: <% result().result.number %>
-          - data.action: <% ctx(data).action = ctx(action) %>
+          - payload: <% ctx(data) %>
+          - payload.executions: <% result().result.number %>
+          - payload.action: <% ctx(action) %>
         do: trigger
       - when: <% failed() %>
         do: 
@@ -28,6 +30,6 @@ tasks:
     action: core.inject_trigger
     input:
       trigger: ratelimit.evaluated
-      payload: <% ctx(data) %>
+      payload: <% ctx(payload) %>
 output:
-  - result: <% ctx(data) %>
+  - result: <% ctx(payload) %>
